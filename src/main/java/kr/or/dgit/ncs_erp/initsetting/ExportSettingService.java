@@ -3,6 +3,8 @@ package kr.or.dgit.ncs_erp.initsetting;
 import java.io.File;
 import java.sql.Connection;
 
+import javax.swing.JOptionPane;
+
 
 
 public class ExportSettingService extends ServiceSetting {
@@ -21,7 +23,7 @@ public class ExportSettingService extends ServiceSetting {
 		if (backupDir.exists()) {
 			for (File file : backupDir.listFiles()) {
 				file.delete();
-				System.out.printf("%s Delete Exist File Success! %n", file.getAbsolutePath());
+				System.out.printf("%s If Exist Then Delete the Files Success! %n", file.getAbsolutePath());
 			}
 		}
 		for (int i=0; i<Config.EXPORT_SQL.length; i++) {
@@ -30,6 +32,7 @@ public class ExportSettingService extends ServiceSetting {
 		}
 				
 		JdbcUtil.close(connection);
+		JOptionPane.showMessageDialog(null, "백업 완료!!!!!");
 	}
 
 	

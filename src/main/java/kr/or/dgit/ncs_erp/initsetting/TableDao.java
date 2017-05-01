@@ -2,8 +2,10 @@ package kr.or.dgit.ncs_erp.initsetting;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +39,8 @@ public class TableDao {
 	public void executeExportData(Connection connection, String sql, String tablePath, String tableName) {
 		try (PreparedStatement pstmt= connection.prepareStatement(sql);	ResultSet rs = pstmt.executeQuery();){
 			String res= createBackupToString(rs, tableName);
-			try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File(tablePath)));){
+			
+			try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(tablePath)), "UTF-8"));){
 				bw.write(res);
 			} catch (IOException e) {
 				e.printStackTrace();

@@ -2,6 +2,8 @@ package kr.or.dgit.ncs_erp.initsetting;
 
 import java.sql.Connection;
 
+import javax.swing.JOptionPane;
+
 
 public class ImportSettingService extends ServiceSetting{
 	private Connection connection;
@@ -21,6 +23,7 @@ public class ImportSettingService extends ServiceSetting{
 			TableDao.getInstance().executeImportData(connection, getFilePath( Config.TABLE_NAME[i], true), Config.TABLE_NAME[i]);
 		}		
 		JdbcUtil.close(connection);
+		JOptionPane.showMessageDialog(null, "복원 완료!!!!!");
 	}
 	
 	
