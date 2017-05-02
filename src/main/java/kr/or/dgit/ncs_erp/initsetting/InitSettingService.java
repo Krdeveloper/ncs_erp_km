@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 
 
-public class InitSettingService extends ServiceSetting {
+public class InitSettingService extends ServiceSetting {//초기화
 	private Connection connection;
 	
 	public InitSettingService() {
@@ -15,9 +15,9 @@ public class InitSettingService extends ServiceSetting {
 	}
 
 	public void initSetting() {
-		createDataBase();	// database 생성
-		createTable(); 	// 해당 데이터베이스에서 테이블 생성		
-		createUser(); 		// 해당 데이터베이스 사용자 추가		
+		createDataBase();	// database 생성(ncs_erp_km)
+		createTable(); 	// table 생성(title, department, employee)	
+		createUser(); 		// user 생성(user_ncs)	
 		JdbcUtil.close(connection);
 		JOptionPane.showMessageDialog(null, "초기화 완료!!!!!");
 	}

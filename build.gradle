@@ -24,12 +24,12 @@ dependencies {
 	compile group: 'log4j', name: 'log4j', version: '1.2.17'	
 	
 	//compile files('src/main/resources/kr/or/dgit/sw_project/libraries/DatePanel.jar')
-	//compile files('src/main/resources/kr/or/dgit/sw_project/libraries/erp_myframework.jar')
+	compile files('src/main/resources/kr/or/dgit/ncs_erp/libraries/erp_myframework.jar')
 }
 
 jar{
-	mainClassName='kr.or.dgit.ncs_erp.initsetting.DbApp'	
-	baseName='DbApp'
+	mainClassName='kr.or.dgit.ncs_erp.ErpApp'	
+	baseName='Main'
 	appendix='bin'
 	version =1.0
 	manifest{

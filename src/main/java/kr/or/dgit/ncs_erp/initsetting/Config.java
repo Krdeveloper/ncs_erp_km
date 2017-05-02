@@ -4,19 +4,19 @@ public class Config {
 	
 	public static final String DRIVER = "com.mysql.jdbc.Driver";
 	
-	public static final String DB_NAME = "ncs_erp_km";
-	public static final String PJT_USER = "user_ncs";
-	public static final String PJT_PASSWD = "user_ncs";
+	public static final String DB_NAME = "ncs_erp_km"; //생성할 db명
+	public static final String PJT_USER = "user_ncs"; //생성할 user명
+	public static final String PJT_PASSWD = "user_ncs"; //password
 	
-	public static final String[] TABLE_NAME = { "department","title", "employee"};
+	public static final String[] TABLE_NAME = { "department","title", "employee"}; //생성할 table명
 	
-	public static final String EXPORT_DIR = System.getProperty("user.dir")+ "\\BackupFiles\\";
-	public static final String IMPORT_DIR = System.getProperty("user.dir")+ "\\DataFiles\\";
+	public static final String EXPORT_DIR = System.getProperty("user.dir")+ "\\BackupFiles\\"; //백업 폴더
+	public static final String IMPORT_DIR = System.getProperty("user.dir")+ "\\DataFiles\\"; //복원 폴더
 	
 	public static final String IMPORT_SQL="LOAD DATA LOCAL INFILE '%s' IGNORE INTO TABLE %s character set 'UTF8' fields TERMINATED by ','";
 	
 	/*------------*/
-	public static final String[] EXPORT_SQL = {
+	public static final String[] EXPORT_SQL = {//각 테이블의 데이타들을 백업하기 위한 쿼리
 			"select tcode, tname from title", 
 			"select dcode, dname, floor from department",
 			"select eno, ename, salary, dno, gender, joindate,title from employee"

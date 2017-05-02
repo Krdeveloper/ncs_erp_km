@@ -5,7 +5,7 @@ import java.sql.Connection;
 import javax.swing.JOptionPane;
 
 
-public class ImportSettingService extends ServiceSetting{
+public class ImportSettingService extends ServiceSetting{//복원 service
 	private Connection connection;
 	
 	public ImportSettingService() {
@@ -15,11 +15,11 @@ public class ImportSettingService extends ServiceSetting{
 
 
 	@Override
-	public void initSetting() {
+	public void initSetting() {//복원
 		DataBaseDao dao = DataBaseDao.getInstance();
 		dao.selectUseDatabase(connection);
 		
-		for(int i=0; i<Config.TABLE_NAME.length; i++){
+		for(int i=0; i<Config.TABLE_NAME.length; i++){//Config.TABLE_NAME에 있는 table 돌림
 			TableDao.getInstance().executeImportData(connection, getFilePath( Config.TABLE_NAME[i], true), Config.TABLE_NAME[i]);
 		}		
 		JdbcUtil.close(connection);
