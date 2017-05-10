@@ -16,38 +16,23 @@ import kr.or.dgit.ncs_erp.initsetting.ServiceSetting;
 
 
 
-public class ErpApp  extends JFrame implements ActionListener {	
+public class SettingUI  extends JFrame implements ActionListener {	
 	private JPanel contentPane;
 	private JButton btnInit;
 	private JButton btnBackup;
-	private JButton btnRestore;
-	private JButton btnDepartment;
-	private JButton btnTitle;
-	private JButton btnEmployee;
+	private JButton btnRestore;	
 	private ServiceSetting create=null;
 
-	public ErpApp() {
+	public SettingUI() {
 		setTitle("DB관리메뉴");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 733, 144);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(10, 10, 10, 10));
+		contentPane.setBorder(new EmptyBorder(20, 20, 20, 20));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(1, 0, 20, 0));
+		contentPane.setLayout(new GridLayout(1, 0, 20, 0));		
 		
 		
-		
-		btnTitle = new JButton("직책");
-		btnTitle.addActionListener(this);
-		contentPane.add(btnTitle);
-		
-		btnDepartment = new JButton("부서");
-		btnDepartment.addActionListener(this);
-		contentPane.add(btnDepartment);
-		
-		btnEmployee = new JButton("사원");
-		btnEmployee.addActionListener(this);
-		contentPane.add(btnEmployee);
 		
 		btnInit = new JButton("초기화");
 		btnInit.addActionListener(this);
@@ -67,15 +52,7 @@ public class ErpApp  extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnEmployee) {//사원
-			actionPerformedBtnEmployee(e);
-		}
-		if (e.getSource() == btnDepartment) {//부서
-			actionPerformedBtnDepartment(e);
-		}
-		if (e.getSource() == btnTitle) {//직책
-			actionPerformedBtnTitle(e);
-		}		
+		
 		if (e.getSource() == btnInit) {//초기화
 			actionPerformedBtnInit(e);			
 		}
@@ -102,20 +79,12 @@ public class ErpApp  extends JFrame implements ActionListener {
 	private void actionPerformedBtnInit(ActionEvent e) {		
 		create = new InitSettingService();
 		create.initSetting();
-	}	
+	}
 	
-	protected void actionPerformedBtnTitle(ActionEvent e) {
-		
-	}
-	protected void actionPerformedBtnDepartment(ActionEvent e) {
-		
-	}
-	protected void actionPerformedBtnEmployee(ActionEvent e) {
-		
-	}
+	
 	
 	public static void main(String[] args) {
-		ErpApp main = new ErpApp();
+		SettingUI main = new SettingUI();
 		main.setVisible(true);
 	}
 }

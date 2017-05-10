@@ -21,14 +21,13 @@ dependencies {
 	compile group: 'junit', name: 'junit', version: '4.12'
 	
 	// https://mvnrepository.com/artifact/log4j/log4j
-	compile group: 'log4j', name: 'log4j', version: '1.2.17'	
+	compile group: 'log4j', name: 'log4j', version: '1.2.17'		
 	
-	//compile files('src/main/resources/kr/or/dgit/sw_project/libraries/DatePanel.jar')
 	compile files('src/main/resources/kr/or/dgit/ncs_erp/libraries/erp_myframework.jar')
 }
 
 jar{
-	mainClassName='kr.or.dgit.ncs_erp.ErpApp'	
+	mainClassName='kr.or.dgit.ncs_erp.ERP_Application'	
 	baseName='Main'
 	appendix='bin'
 	version =1.0

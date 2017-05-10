@@ -8,8 +8,7 @@ public class Employee {
 	private String name;
 	private Title title;
 	private int salary;
-	private boolean gender;
-	private ArrayList<String> hobbys;
+	private boolean sex;	
 	private Department department;
 	private Date joinDate;
 	
@@ -18,15 +17,14 @@ public class Employee {
 		this.no = no;
 	}
 
-	public Employee(String no, String name, Title title, int salary, boolean gender, ArrayList<String> hobbys,
+	public Employee(String no, String name, Title title, int salary, boolean sex,
 			Department department, Date joinDate) {
 		super();
 		this.no = no;
 		this.name = name;
 		this.title = title;
 		this.salary = salary;
-		this.gender = gender;
-		this.hobbys = hobbys;
+		this.sex = sex;		
 		this.department = department;
 		this.joinDate = joinDate;
 	}
@@ -63,21 +61,14 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public boolean isGender() {
-		return gender;
+	public boolean isSex() {
+		return sex;
 	}
 
-	public void setGender(boolean gender) {
-		this.gender = gender;
+	public void setSex(boolean sex) {
+		this.sex = sex;
 	}
 
-	public ArrayList<String> getHobbys() {
-		return hobbys;
-	}
-
-	public void setHobbys(ArrayList<String> hobbys) {
-		this.hobbys = hobbys;
-	}
 
 	public Department getDepartment() {
 		return department;
@@ -129,11 +120,11 @@ public class Employee {
 	public String toString() {
 		return String.format(
 				"Employee [no=%s, name=%s, title=%s, salary=%s, gender=%s, hobbys=%s, department=%s, joinDate=%s]", no,
-				name, title, salary, gender, hobbys, department, joinDate);
+				name, title, salary, sex, department, joinDate);
 	}
 	
 	public Object[] toArray() {		
-		return new Object[]{no,name,title,String.format("%,d",salary),gender?"남":"여",hobbys,
+		return new Object[]{no,name,title,String.format("%,d",salary),sex?"남":"여",sex,
 				department,String.format("%tF",joinDate)};
 	}
 	

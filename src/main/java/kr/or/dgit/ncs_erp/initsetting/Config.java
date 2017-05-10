@@ -8,7 +8,7 @@ public class Config {
 	public static final String PJT_USER = "user_ncs"; //생성할 user명
 	public static final String PJT_PASSWD = "user_ncs"; //password
 	
-	public static final String[] TABLE_NAME = { "department","title", "employee"}; //생성할 table명
+	public static final String[] TABLE_NAME = { "title","department", "employee"}; //생성할 table명
 	
 	public static final String EXPORT_DIR = System.getProperty("user.dir")+ "\\BackupFiles\\"; //백업 폴더
 	public static final String IMPORT_DIR = System.getProperty("user.dir")+ "\\DataFiles\\"; //복원 폴더
