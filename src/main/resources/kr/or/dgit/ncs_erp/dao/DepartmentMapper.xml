@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="kr.or.dgit.ncs_erp.dao.DepartmentMapper">
+   
+	<resultMap type="Department" id="DepartmentResult">
+    	<id property="no" column="dcode"/>
+    	<result property="name" column="dname"/>
+    	<result property="floor" column="floor"/>
+    	
+    </resultMap>
+    
+	<!-- Select SQL -->
+    <sql id="selectSQL">
+		SELECT * FROM department
+	</sql>
+	
+	    
+    <!-- Select By All --> 
+    <select id="selectDepartmentByAll" resultMap="DepartmentResult">
+    	<include refid="selectSQL" />
+    		ORDER BY dcode;
+    </select>
+    
+   	
+	
+	
+    
+</mapper>

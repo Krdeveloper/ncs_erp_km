@@ -12,6 +12,12 @@ public class Employee {
 	private Department department;
 	private Date joinDate;
 	
+	
+	public Employee() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public Employee(String no) {
 	
 		this.no = no;

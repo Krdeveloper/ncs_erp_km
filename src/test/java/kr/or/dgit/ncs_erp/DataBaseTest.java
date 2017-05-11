@@ -29,7 +29,7 @@ public class DataBaseTest {
 		connection = null;
 	}
 
-	@Test
+	/*@Test
 	public void aTestDBConnection() {
 		Assert.assertNotNull(connection);
 	}
@@ -74,5 +74,5 @@ public class DataBaseTest {
 		rs.close();
 		pstmt.close();
 		return result;
-	}
+	}*/
 }

@@ -4,6 +4,11 @@ public class Department {
 	private String no;
 	private String name;
 	private int floor;
+	
+	public Department() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Department(String no) {
 		super();
 		this.no = no;
