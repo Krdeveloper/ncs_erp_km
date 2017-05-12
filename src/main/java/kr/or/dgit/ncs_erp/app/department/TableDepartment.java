@@ -38,7 +38,7 @@ public class TableDepartment extends JPanel {
 
 	
 	private Object[] getColumn() {
-		return new String[]{"번호","직책"};
+		return new String[]{"번호","부서명","위치"};
 	}
 
 	private Object[][] getRowData() {

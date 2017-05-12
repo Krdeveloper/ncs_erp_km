@@ -2,12 +2,15 @@ package kr.or.dgit.ncs_erp.app.department;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JPanel;
 
 import framework.TextFieldPanel;
 import kr.or.dgit.ncs_erp.dto.Department;
 import kr.or.dgit.ncs_erp.dto.Title;
+import kr.or.dgit.ncs_erp.service.DepartmentService;
+import kr.or.dgit.ncs_erp.service.TitleService;
 
 public class ContentDepartment extends JPanel {
 
@@ -35,7 +38,7 @@ public class ContentDepartment extends JPanel {
 	}
 
 	public void resetField() {
-		setDeliveryCode(); 
+		setDepartmentNo(); 
 		pDeptName.setTfValue("");
 		pDeptName.gettF().requestFocus();
 
@@ -43,11 +46,14 @@ public class ContentDepartment extends JPanel {
 
 	
 	
-	private void setDeliveryCode() {
-		/*---------------not yet----------------*/
-		
-		pNo.setTfValue("D001");               
-		pNo.gettF().setEditable(false);
+	private void setDepartmentNo() {
+		List<Department> list = DepartmentService.getInstance().selectDepartmentByAll();
+		if(list.size()==0){
+			pNo.setTfValue("1");    
+		}else{
+			pNo.setTfValue(String.valueOf(list.size()+1));
+			pNo.gettF().setEditable(false);
+		}
 		
 	}
 
@@ -63,12 +69,13 @@ public class ContentDepartment extends JPanel {
 		return pFloor;
 	}
 
-	/*public Department getObject() {
+	public Department getObject() {
 		String no = pNo.getTfValue();
 		String deptName = pDeptName.getTfValue();
-		return new Department(no, deptName);
+		int floor = Integer.parseInt(pFloor.getTfValue());
+		return new Department(no, deptName, floor);
 
-	}*/
+	}
 
 	public void setObject(Department item) {
 		/*not yet*/

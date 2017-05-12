@@ -32,7 +32,7 @@ public class Config {
 			,
 			/*부서*/
 			"CREATE TABLE department ("
-			+ "dcode         INT(11)  not NULL ,"
+			+ "dcode         int(11)  not NULL ,"
 			+ "dname   char(10) not NULL, "
 			+ "floor       INT(11) NULL, "			
 			+ "primary key (dcode))"
@@ -48,7 +48,7 @@ public class Config {
 			+ "title int(11),  "
 			+ "primary key(eno), "
 			+ "FOREIGN KEY (dno) REFERENCES department (dcode)     ON UPDATE CASCADE,   "
-			+ "FOREIGN KEY (title)        REFERENCES title (tcode)       ON UPDATE CASCADE  ); "			
+			+ "FOREIGN KEY (title)        REFERENCES title (tcode)       ON UPDATE CASCADE  )    "   		
 								
 	};
 	

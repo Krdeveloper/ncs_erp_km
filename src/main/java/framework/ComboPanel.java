@@ -8,6 +8,10 @@ import java.util.Vector;
 public class ComboPanel<T> extends CompPanel {
 	private JComboBox<T> tf;
 	
+	public JComboBox<T> getTf() {
+		return tf;
+	}
+
 	public ComboPanel() {
 		pValue.setLayout(new GridLayout(1, 0, 0, 0));
 		tf = new JComboBox<>();

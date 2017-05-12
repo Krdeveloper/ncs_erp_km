@@ -11,11 +11,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import kr.or.dgit.ncs_erp.dto.Department;
 import kr.or.dgit.ncs_erp.dto.Title;
+import kr.or.dgit.ncs_erp.service.DepartmentService;
 
 
 public class ViewDepartment extends JFrame implements ActionListener {
-	protected List<Title> list;
+	protected List<Department> list;
 	private TableDepartment pTable;
 	private JButton btnAdd;
 	private JButton btnCancel;
@@ -48,7 +50,9 @@ public class ViewDepartment extends JFrame implements ActionListener {
 		});
 
 		getContentPane().add(pTable);
-
+		
+		setTable();
+		setVisible(true);
 		
 	}
 
@@ -57,6 +61,18 @@ public class ViewDepartment extends JFrame implements ActionListener {
 	
 
 	
+
+	private void setTable() {
+		list = DepartmentService.getInstance().selectDepartmentByAll();
+		pTable.setList(list);
+		pTable.setTableData();
+	}
+
+
+
+
+
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

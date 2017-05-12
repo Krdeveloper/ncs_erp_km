@@ -2,6 +2,7 @@ package kr.or.dgit.ncs_erp.app.title;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -9,6 +10,7 @@ import javax.swing.JTextField;
 
 import framework.TextFieldPanel;
 import kr.or.dgit.ncs_erp.dto.Title;
+import kr.or.dgit.ncs_erp.service.TitleService;
 
 public class ContentTitle extends JPanel {
 	private JTextField textField;
@@ -33,18 +35,22 @@ public class ContentTitle extends JPanel {
 	}
 
 	public void resetField() {
-		setDeliveryCode(); 
+		setTitleNo(); 
 		pTitle.setTfValue("");
 		pTitle.gettF().requestFocus();
 
 	}
 
 	
-	private void setDeliveryCode() {
-		/*---------------not yet----------------*/
+	private void setTitleNo() {		
+		List<Title> list = TitleService.getInstance().selectTitleByAll();
+		if(list.size()==0){
+			pNo.setTfValue("1");    
+		}else{
+			pNo.setTfValue(String.valueOf(list.size()+1));
+			pNo.gettF().setEditable(false);
+		}
 		
-		pNo.setTfValue("T001");               
-		pNo.gettF().setEditable(false);
 	     
 		
 	}

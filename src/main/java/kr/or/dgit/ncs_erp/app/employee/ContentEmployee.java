@@ -2,12 +2,10 @@ package kr.or.dgit.ncs_erp.app.employee;
 
 import java.awt.Component;
 import java.awt.GridLayout;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
 import framework.ComboPanel;
@@ -18,16 +16,21 @@ import framework.TextFieldPanel;
 import kr.or.dgit.ncs_erp.dto.Department;
 import kr.or.dgit.ncs_erp.dto.Employee;
 import kr.or.dgit.ncs_erp.dto.Title;
+import kr.or.dgit.ncs_erp.service.DepartmentService;
+import kr.or.dgit.ncs_erp.service.EmployeeService;
+import kr.or.dgit.ncs_erp.service.TitleService;
 
 public class ContentEmployee extends JPanel {
 
 	private TextFieldPanel pNo;
 	private TextFieldPanel pName;
-	private ComboPanel<Title> pTitle;
+	private ComboPanel<String> pTitle;
 	private SpinnerPanel pSalary;
 	private RadioPanel pSex;
-	private ComboPanel<Department> pDeptName;
+	private ComboPanel<String> pDeptName;
 	private TextFieldFormatPanel pJoinDate;
+	private List<Title> titleList;
+	private List<Department> deptList;
 
 	/**
 	 * Create the panel.
@@ -68,20 +71,51 @@ public class ContentEmployee extends JPanel {
 		pJoinDate.setTitle("입사일");
 		add(pJoinDate);
 		
+		setComboTitle();
+		setComboDepartment();
 		resetField();
 
 	}
 
+	private void setComboDepartment() {
+		pDeptName.getTf().removeAllItems();
+		deptList = DepartmentService.getInstance().selectDepartmentByAll();
+		Vector<String> v = new Vector<>();
+		v.removeAllElements();		
+		for (int i = 0; i < deptList.size(); i++) {
+			v.add(deptList.get(i).toCombo());
+		}
+		pDeptName.setComboData(v);
+
+	}
+
+	private void setComboTitle() {
+		pTitle.getTf().removeAllItems();
+		titleList = TitleService.getInstance().selectTitleByAll();
+		Vector<String> v = new Vector<>();
+		v.removeAllElements();		
+		for (int i = 0; i < titleList.size(); i++) {
+			v.add(titleList.get(i).toCombo());
+		}
+		pTitle.setComboData(v);
+
+	}
+
 	public void resetField() {
-		setDeliveryCode(); 	
+		setEmployeeCode(); 	
 		pSex.setSelectedItem(0);
 		
 
 	}
 
-	private void setDeliveryCode() {
-		pNo.setTfValue("E001");
-		pNo.gettF().setEditable(false);
+	private void setEmployeeCode() {
+		List<Employee> list = EmployeeService.getInstance().selectEmployeeByAll();
+		if(list.size()==0){
+			pNo.setTfValue("1");    
+		}else{
+			pNo.setTfValue(String.valueOf(list.size()+1));
+			pNo.gettF().setEditable(false);
+		}
 		
 	}
 
@@ -93,7 +127,11 @@ public class ContentEmployee extends JPanel {
 		return pName;
 	}
 
-	
+	/*public Employee getObject(){
+		String no =
+		String name =
+		
+	}*/
 
 	public boolean isEmpty() {
 

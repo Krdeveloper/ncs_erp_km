@@ -6,11 +6,11 @@ import java.util.Date;
 public class Employee {
 	private String no;
 	private String name;
-	private Title title;
+	private Title eTitle;
 	private int salary;
 	private boolean sex;	
-	private Department department;
-	private Date joinDate;
+	private Department eDepartment;
+	private String eJoinDate;
 	
 	
 	public Employee() {
@@ -24,15 +24,15 @@ public class Employee {
 	}
 
 	public Employee(String no, String name, Title title, int salary, boolean sex,
-			Department department, Date joinDate) {
+			Department department, String joinDate) {
 		super();
 		this.no = no;
 		this.name = name;
-		this.title = title;
+		this.eTitle = title;
 		this.salary = salary;
 		this.sex = sex;		
-		this.department = department;
-		this.joinDate = joinDate;
+		this.eDepartment = department;
+		this.eJoinDate = joinDate;
 	}
 
 	public String getNo() {
@@ -52,11 +52,11 @@ public class Employee {
 	}
 
 	public Title getTitle() {
-		return title;
+		return eTitle;
 	}
 
 	public void setTitle(Title title) {
-		this.title = title;
+		this.eTitle = title;
 	}
 
 	public int getSalary() {
@@ -77,19 +77,19 @@ public class Employee {
 
 
 	public Department getDepartment() {
-		return department;
+		return eDepartment;
 	}
 
 	public void setDepartment(Department department) {
-		this.department = department;
+		this.eDepartment = department;
 	}
 
-	public Date getJoinDate() {
-		return joinDate;
+	public String getJoinDate() {
+		return eJoinDate;
 	}
 
-	public void setJoinDate(Date joinDate) {
-		this.joinDate = joinDate;
+	public void setJoinDate(String joinDate) {
+		this.eJoinDate = joinDate;
 	}
 
 	@Override
@@ -125,13 +125,13 @@ public class Employee {
 	@Override
 	public String toString() {
 		return String.format(
-				"Employee [no=%s, name=%s, title=%s, salary=%s, gender=%s, hobbys=%s, department=%s, joinDate=%s]", no,
-				name, title, salary, sex, department, joinDate);
+				"%s, %s, %s, %s, %s, %s, %s, %s", 
+				no,	name, eTitle, salary, sex, eDepartment, eJoinDate);
 	}
 	
 	public Object[] toArray() {		
-		return new Object[]{no,name,title,String.format("%,d",salary),sex?"남":"여",sex,
-				department,String.format("%tF",joinDate)};
+		return new Object[]{no,name,eTitle.getName() ,salary , sex?"남":"여",
+				eDepartment.getName() ,eJoinDate};
 	}
 	
 	

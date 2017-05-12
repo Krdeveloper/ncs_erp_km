@@ -73,6 +73,9 @@ public class Department {
 	public Object[] toArray() {		
 		return new Object[]{no, name, floor};
 	}
+	public String toCombo(){
+		return String.format("%s (%s 층)", name,floor);
+	}
 	
 	
 }

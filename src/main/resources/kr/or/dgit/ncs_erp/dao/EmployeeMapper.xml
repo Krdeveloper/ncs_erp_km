@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="kr.or.dgit.ncs_erp.dao.EmployeeMapper">
+   
+	<resultMap type="Employee" id="EmployeeResult">
+    	<id property="no" column="eno"/>
+    	<result property="name" column="ename"/>
+    	<result property="salary" column="salary"/>
+    	<result property="sex" column="gender"/>
+    	<result property="eJoinDate" column="joindate"/>
+    	<association property="eTitle" resultMap="kr.or.dgit.ncs_erp.dao.TitleMapper.TitleResult"/>
+    	<association property="eDepartment" resultMap="kr.or.dgit.ncs_erp.dao.DepartmentMapper.DepartmentResult"/>
+    </resultMap>
+    
+	<!-- Select SQL -->
+    <sql id="selectSQL">
+		SELECT DISTINCT e.eno, e.ename, e.salary, t.tname, d.dname, e.gender, e.joindate
+          FROM employee e
+         JOIN title t ON e.title = t.tcode
+         JOIN department d ON e.dno = d.dcode
+	</sql>
+	
+	    
+    <!-- Select By All --> 
+    <select id="selectEmployeeByAll" resultMap="EmployeeResult">
+    	<include refid="selectSQL" />
+    		order by eno;
+    </select>
+    
+   	
+	
+	
+    
+</mapper>

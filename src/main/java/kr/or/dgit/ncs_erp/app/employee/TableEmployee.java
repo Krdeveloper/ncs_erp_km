@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import kr.or.dgit.ncs_erp.dto.Department;
 import kr.or.dgit.ncs_erp.dto.Employee;
 
 public class TableEmployee extends JPanel {
@@ -37,7 +38,12 @@ public class TableEmployee extends JPanel {
 	}
 
 	protected Object[][] getRowData() {
-		return null;
+		List<Employee> listForTable = new ArrayList<Employee>(employeeList);
+		Object[][] datas = new Object[listForTable.size()][];
+		for(int i=0; i<datas.length; i++){
+			datas[i] = listForTable.get(i).toArray();
+		}
+		return datas;
 	}
 
 	public List<Employee> getEmployeeList() {

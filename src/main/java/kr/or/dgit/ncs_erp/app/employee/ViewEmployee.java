@@ -18,6 +18,8 @@ import javax.swing.JPopupMenu;
 import kr.or.dgit.ncs_erp.dto.Department;
 import kr.or.dgit.ncs_erp.dto.Employee;
 import kr.or.dgit.ncs_erp.dto.Title;
+import kr.or.dgit.ncs_erp.service.EmployeeService;
+
 import javax.swing.border.EmptyBorder;
 
 public class ViewEmployee extends JFrame implements ActionListener {
@@ -56,8 +58,9 @@ public class ViewEmployee extends JFrame implements ActionListener {
 		});
 
 		getContentPane().add(pTable);
-
 		
+		setTable();
+		setVisible(true);
 	}
 
 	
@@ -66,6 +69,20 @@ public class ViewEmployee extends JFrame implements ActionListener {
 	
 
 	
+
+	private void setTable() {
+		list = EmployeeService.getInstance().selectEmployeeByAll();
+		pTable.setEmployeeList(list);
+		pTable.setTableData();
+		
+	}
+
+
+
+
+
+
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

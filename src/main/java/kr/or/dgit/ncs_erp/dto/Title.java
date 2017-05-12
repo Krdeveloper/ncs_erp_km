@@ -75,5 +75,8 @@ public class Title {
 	public Object[] toArray() {		
 		return new Object[]{no, name};
 	}
+	public String toCombo(){
+		return name;
+	}
 	
 }
