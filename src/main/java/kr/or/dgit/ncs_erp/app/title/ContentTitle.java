@@ -49,9 +49,7 @@ public class ContentTitle extends JPanel {
 		}else{
 			pNo.setTfValue(String.valueOf(list.size()+1));
 			pNo.gettF().setEditable(false);
-		}
-		
-	     
+		}  
 		
 	}
 
@@ -70,14 +68,15 @@ public class ContentTitle extends JPanel {
 
 	}
 
-	public void setObject(Title item) {
-		pNo.setTfValue(item.getNo());
-		pTitle.setTfValue(item.getName());
+	
+	public void setObject(Object[] supplyCompanyObj) {// take data from table
+		// TODO Auto-generated method stub
+		pNo.setTfValue(String.valueOf(supplyCompanyObj[0]));
+		pTitle.setTfValue(String.valueOf(supplyCompanyObj[1]));
 
 	}
 
 	public boolean isEmpty() {
-
 		for (Component c : getComponents()) {
 			if (c instanceof TextFieldPanel) {
 				TextFieldPanel tfp = (TextFieldPanel) c;

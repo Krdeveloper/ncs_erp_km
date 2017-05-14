@@ -8,18 +8,34 @@
     	
     </resultMap>
     
-	<!-- Select SQL -->
+	
     <sql id="selectSQL">
 		SELECT * FROM title
 	</sql>
 	
 	    
-    <!-- Select By All --> 
+    
     <select id="selectTitleByAll" resultMap="TitleResult">
     	<include refid="selectSQL" />
     		ORDER BY tcode;
     </select>
     
+    
+	<insert id="insertTitleItem" parameterType="Title">
+		INSERT INTO title (tcode, tname)
+		VALUES (#{no},#{name})
+	</insert>
+	
+	
+	<update id="updateTitleItem" parameterType="Title">
+		UPDATE title
+		SET tname=#{name} 
+		WHERE tcode=#{no}
+	</update>
+	
+	<delete id="deleteTitleItem" parameterType="Title">
+		delete from title where tcode=#{no}
+	</delete>
    	
 	
 	

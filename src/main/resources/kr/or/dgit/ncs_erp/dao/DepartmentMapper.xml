@@ -9,18 +9,33 @@
     	
     </resultMap>
     
-	<!-- Select SQL -->
+	
     <sql id="selectSQL">
 		SELECT * FROM department
 	</sql>
 	
 	    
-    <!-- Select By All --> 
+     
     <select id="selectDepartmentByAll" resultMap="DepartmentResult">
     	<include refid="selectSQL" />
     		ORDER BY dcode;
     </select>
     
+    <insert id="insertDepartmentItem" parameterType="Department">
+		INSERT INTO department (dcode, dname, floor)
+		VALUES (#{no},#{name},#{floor})
+	</insert>
+	
+	
+	<update id="updateDepartmentItem" parameterType="Department">
+		UPDATE department
+		SET dname=#{name} , floor=#{floor}
+		WHERE dcode=#{no}
+	</update>
+	
+	<delete id="deleteDepartmentItem" parameterType="Department">
+		delete from department where dcode=#{no}
+	</delete>
    	
 	
 	

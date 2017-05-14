@@ -40,6 +40,7 @@ public class ContentDepartment extends JPanel {
 	public void resetField() {
 		setDepartmentNo(); 
 		pDeptName.setTfValue("");
+		pFloor.setTfValue("");
 		pDeptName.gettF().requestFocus();
 
 	}
@@ -77,8 +78,11 @@ public class ContentDepartment extends JPanel {
 
 	}
 
-	public void setObject(Department item) {
-		/*not yet*/
+	public void setObject(Object[] departmentObj) {// take data from table
+		// TODO Auto-generated method stub
+		pNo.setTfValue(String.valueOf(departmentObj[0]));
+		pDeptName.setTfValue(String.valueOf(departmentObj[1]));
+		pFloor.setTfValue(String.valueOf(departmentObj[2]));
 
 	}
 

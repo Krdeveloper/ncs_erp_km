@@ -36,5 +36,8 @@ public class ComboPanel<T> extends CompPanel {
 	public void setSelectedItem(int idx){
 		tf.setSelectedIndex(idx);
 	}
+	public int getSelectedItemIdx(){
+		return tf.getSelectedIndex();
+	}
 
 }

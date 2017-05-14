@@ -22,4 +22,36 @@ public class EmployeeService {
 			return employeeMapper.selectEmployeeByAll();
 		} 
 	}
+	
+	public int insertEmployeeItem(Employee employee) {//db table에 입력
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			EmployeeMapper employeeMapper = new EmployeeMapperImpl(sqlSession);
+			int res= employeeMapper.insertEmployeeItem(employee);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+
+	public int updateEmployeeItem(Employee employee) {//db table값수정
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			EmployeeMapper employeeMapper = new EmployeeMapperImpl(sqlSession);
+			int res= employeeMapper.updateEmployeeItem(employee);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+	public int deleteEmployeeItem(Employee employee) {//delete one of the table's item
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			EmployeeMapper employeeMapper = new EmployeeMapperImpl(sqlSession);
+			int res= employeeMapper.deleteEmployeeItem(employee);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+	public Employee selectByNo(Employee employee) {//no통해 검색
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			EmployeeMapper employeeMapper = new EmployeeMapperImpl(sqlSession);
+			return employeeMapper.selectByNo(employee);
+		} 
+	}
 }

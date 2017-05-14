@@ -2,6 +2,8 @@ package kr.or.dgit.ncs_erp.app.employee;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Vector;
@@ -100,11 +102,27 @@ public class ContentEmployee extends JPanel {
 		pTitle.setComboData(v);
 
 	}
+	public void setEmpField(Employee employee){
+		pNo.setTfValue(employee.getNo());
+		pName.setTfValue(employee.getName());
+		pTitle.setSelectedItem(employee.getTitle().getName());
+		pDeptName.setSelectedItem(
+				employee.getDepartment().getName());		
+		pSalary.setValue(employee.getSalary());
+		pJoinDate.setTfValue(employee.geteJoinDate());
+		// System.out.println("====================");
+		pSex.setSelectedItem(employee.isSex()?"남":"여");
+		
+	}
 
 	public void resetField() {
 		setEmployeeCode(); 	
 		pSex.setSelectedItem(0);
-		
+		pDeptName.setSelectedItem(0);
+		pTitle.setSelectedItem(0);
+		pName.setTfValue("");
+		pSalary.setValues(1500000, 1000000, 5000000, 100000);
+		pJoinDate.setTfValue(String.format("%tF", new Date()));
 
 	}
 
@@ -127,11 +145,16 @@ public class ContentEmployee extends JPanel {
 		return pName;
 	}
 
-	/*public Employee getObject(){
-		String no =
-		String name =
-		
-	}*/
+	public Employee getObject(){
+		String no = pNo.getTfValue();
+		String name = pName.getTfValue();
+		String title = titleList.get(pTitle.getSelectedItemIdx()).getNo();
+		int salary = (int) pSalary.getValue();
+		boolean sex = pSex.getSelectedItem().equals("남")?true:false;
+		String department = deptList.get(pDeptName.getSelectedItemIdx()).getNo();
+		String joinDate = pJoinDate.getTfValue();
+		return new Employee(no, name, new Title(title), salary, sex, new Department(department), joinDate);
+	}
 
 	public boolean isEmpty() {
 

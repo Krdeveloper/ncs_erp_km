@@ -1,7 +1,5 @@
 package kr.or.dgit.ncs_erp;
 
-import static org.junit.Assert.*;
-
 import java.util.List;
 
 import org.junit.AfterClass;
@@ -10,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import kr.or.dgit.ncs_erp.dto.Department;
-import kr.or.dgit.ncs_erp.dto.Title;
 import kr.or.dgit.ncs_erp.service.DepartmentService;
 
 public class DepartmentTest {
@@ -34,5 +31,25 @@ public class DepartmentTest {
 		}
 		
 	}
+	/*@Test
+	public void testInsert() {
+		Department department = new Department("6", "deptins1",99);
+		int res=departmentService.getInstance().insertDepartmentItem(department);
+		Assert.assertEquals(1, res);
+	}*/
+	/*@Test
+	public void testUpdate() {
+		Department department = new Department("6", "deptup1",88);
+		int res=departmentService.getInstance().updateDepartmentItem(department);
+		Assert.assertEquals(1, res);
+	}*/
+	/*@Test
+	public void testDelete() {
+		Department department = new Department();
+		department.setNo("6");
+		int res=departmentService.getInstance().deleteDepartmentItem(department);
+		Assert.assertEquals(1, res);
+	}*/
+
 
 }

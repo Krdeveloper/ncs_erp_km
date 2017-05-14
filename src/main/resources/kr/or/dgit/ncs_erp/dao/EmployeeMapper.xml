@@ -12,7 +12,7 @@
     	<association property="eDepartment" resultMap="kr.or.dgit.ncs_erp.dao.DepartmentMapper.DepartmentResult"/>
     </resultMap>
     
-	<!-- Select SQL -->
+	
     <sql id="selectSQL">
 		SELECT DISTINCT e.eno, e.ename, e.salary, t.tname, d.dname, e.gender, e.joindate
           FROM employee e
@@ -21,11 +21,31 @@
 	</sql>
 	
 	    
-    <!-- Select By All --> 
+   
     <select id="selectEmployeeByAll" resultMap="EmployeeResult">
     	<include refid="selectSQL" />
     		order by eno;
     </select>
+    <select id="selectByNo" parameterType="Employee" resultMap="EmployeeResult">
+		<include refid="selectSQL"/>
+		where eno=#{no}
+	</select>
+    
+    <insert id="insertEmployeeItem" parameterType="Employee">
+		INSERT INTO employee (eno, ename, salary, dno,gender,joindate,title)
+		VALUES (#{no},#{name},#{salary},#{department.no},#{sex},#{eJoinDate},#{title.no})
+	</insert>
+	
+	
+	<update id="updateEmployeeItem" parameterType="Employee">
+		UPDATE employee
+		SET ename=#{name} , salary=#{salary}, dno=#{department.no},gender=#{sex},joindate=#{eJoinDate},title=#{title.no}
+		WHERE eno=#{no}
+	</update>
+	
+	<delete id="deleteEmployeeItem" parameterType="Employee">
+		delete from employee where  eno=#{no}
+	</delete>
     
    	
 	

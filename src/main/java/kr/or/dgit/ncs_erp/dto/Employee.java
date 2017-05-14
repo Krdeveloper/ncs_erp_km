@@ -84,12 +84,14 @@ public class Employee {
 		this.eDepartment = department;
 	}
 
-	public String getJoinDate() {
+	
+
+	public String geteJoinDate() {
 		return eJoinDate;
 	}
 
-	public void setJoinDate(String joinDate) {
-		this.eJoinDate = joinDate;
+	public void seteJoinDate(String eJoinDate) {
+		this.eJoinDate = eJoinDate;
 	}
 
 	@Override

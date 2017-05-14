@@ -22,4 +22,30 @@ public class DepartmentService {
 			return departmentMapper.selectDepartmentByAll();
 		} 
 	}
+	
+	public int insertDepartmentItem(Department department) {//db table에 입력
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			DepartmentMapper departmentMapper = new DepartmentMapperImpl(sqlSession);
+			int res= departmentMapper.insertDepartmentItem(department);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+
+	public int updateDepartmentItem(Department department) {//db table값수정
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			DepartmentMapper departmentMapper = new DepartmentMapperImpl(sqlSession);
+			int res= departmentMapper.updateDepartmentItem(department);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+	public int deleteDepartmentItem(Department department) {//delete one of the table's item
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			DepartmentMapper departmentMapper = new DepartmentMapperImpl(sqlSession);
+			int res= departmentMapper.deleteDepartmentItem(department);
+			sqlSession.commit();
+			return res;
+		} 
+	}
 }

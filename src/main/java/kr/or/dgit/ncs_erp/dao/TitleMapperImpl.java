@@ -24,4 +24,22 @@ public class TitleMapperImpl implements TitleMapper{
 		return sqlSession.selectList(nameSpace + "selectTitleByAll");
 	}
 
+	@Override
+	public int insertTitleItem(Title title) {
+		log.debug("insertTitleItem()");
+		return sqlSession.insert(nameSpace + "insertTitleItem",title);
+	}
+
+	@Override
+	public int updateTitleItem(Title title) {
+		log.debug("updateTitleItem()");
+		return sqlSession.update(nameSpace + "updateTitleItem",title);
+	}
+
+	@Override
+	public int deleteTitleItem(Title title) {///..should check.
+		log.debug("deleteTitleItem()");
+		return sqlSession.update(nameSpace + "deleteTitleItem",title);
+	}
+
 }

@@ -24,4 +24,30 @@ public class TitleService {
 			return titleMapper.selectTitleByAll();
 		} 
 	}
+	
+	public int insertTitleItem(Title title) {//db table에 입력
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
+			int res= titleMapper.insertTitleItem(title);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+
+	public int updateTitleItem(Title title) {//db table값수정
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
+			int res= titleMapper.updateTitleItem(title);
+			sqlSession.commit();
+			return res;
+		} 
+	}
+	public int deleteTitleItem(Title title) {//delete one of the table's item
+		try (SqlSession sqlSession = MyBatisSqlSessionFactory.getSqlSessionFactory().openSession();) {
+			TitleMapper titleMapper = new TitleMapperImpl(sqlSession);
+			int res= titleMapper.deleteTitleItem(title);
+			sqlSession.commit();
+			return res;
+		} 
+	}
 }
